@@ -41,7 +41,7 @@ export function create_move_to_command(object, target, speed, threshold = 0.1) {
             const dist_to_target = this.target.distanceTo(object_position);
             if (dist_to_target > this.threshold) {
                 const target_dir = this.target.clone().sub(object_position);
-                console.log(target_dir);
+                //console.log(target_dir);
                 if (dist_to_target > this.speed) {
                     this.object.position.add(target_dir.normalize().multiplyScalar(this.speed));
                 } else {

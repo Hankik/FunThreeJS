@@ -9,7 +9,7 @@ export function create() {
         state: globalThis.ACTOR_STATE.ALIVE,
     }
     init(new_player);
-    return new_player;
+    return new_player;d
 }
 
 
