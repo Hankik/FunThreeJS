@@ -14,7 +14,7 @@ export function create() {
 
 
 export function init(player) {
-
+    
     player.body.position.set(0, 0.5, 0);
     player.root.add(player.body);
     player.root.name = "player";

@@ -25,7 +25,7 @@ export function update(token) {
 
     const player = token.root.parent.getObjectByName("player");
 
-    console.log(token.root.position.distanceTo(player.position));
+    //console.log(token.root.position.distanceTo(player.position));
     if (token.root.position.distanceTo(player.position) < 2) {
         globalThis.points++;
         globalThis.doc.innerHTML = `Points: ${globalThis.points}`;

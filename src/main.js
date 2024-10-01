@@ -5,6 +5,7 @@ import * as CONTROLLER from './controller.js';
 
 
 const canvas = document.querySelector("canvas.webgl");
+const FLT_MIN = 1.175494e-38;
 globalThis.mouse = new THREE.Vector2();
 globalThis.detailsId = null;
 globalThis.zoom = 1;
@@ -142,8 +143,41 @@ function on_click() {
       ImGui.SetNextWindowSize(new ImGui.ImVec2(294, 500), ImGui.Cond.FirstUseEver);
       ImGui.Begin(object.type + " Details");
 
+
+
       for (let property in object) {
-        ImGui.Text(property + ": " + JSON.stringify(object[property]));
+        //ImGui.Text(property + ": " + JSON.stringify(object[property]));
+        const type = typeof (object[property]);
+        if (!object[property]) continue;
+
+        ImGui.Text(property);
+        ImGui.SameLine();
+
+        switch (type) {
+          case "number": {
+            if (object[property] % 1 === 0) { // int
+              console.log(object[property]);
+              ImGui.InputInt(property, object[property], 1);
+            } else { // float
+              ImGui.InputFloat(property, object[property], 1.0);
+            }
+
+          } break;
+          case "string": {
+
+            ImGui.Text(property);
+          } break;
+          case "boolean": {
+
+            ImGui.Text(property);
+          } break;
+          case "object": {
+            ImGui.Text(property);
+          } break;
+          default:
+            ImGui.Text(type);
+        }
+        //ImGui.NextColumn();
       }
 
       ImGui.End();
