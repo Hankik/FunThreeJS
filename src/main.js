@@ -11,6 +11,7 @@ globalThis.detailsId = null;
 globalThis.zoom = 1;
 globalThis.points = 0;
 globalThis.doc = document.getElementById("info");
+globalThis.idCounter = 0;
 
 globalThis.pointer = new THREE.Vector2();
 globalThis.keys = new Map();

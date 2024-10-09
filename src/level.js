@@ -9,7 +9,38 @@ globalThis.ACTOR_STATE = Object.freeze({
     ASLEEP: 2
 });
 
+globalThis.ACTOR_TYPE = Object.freeze({
+    BASE: Symbol(0),
+    SCENE: Symbol(1),
+    PLAYER: Symbol(2),
+    TOKEN: Symbol(3),
+})
+
+
+class Actor {
+    constructor(type) {
+        this.id = globalThis.idCounter++;
+        this.type = type;
+        this.child_actors = [];
+    }
+}
+
+class Scene extends Actor {
+    constructor() {
+        super(globalThis.ACTOR_TYPE.SCENE);
+    }
+}
+
 export function create() {
+
+    const s = new Scene();
+    for (let i in s) {
+        console.log(s[i]);
+    }
+
+    for (let i in scene_actor) {
+        console.log(scene_actor[i]);
+    }
 
     const new_level = {
         scene: new THREE.Scene(),
